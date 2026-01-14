@@ -1,7 +1,7 @@
 /* =========================================
    1. FONTS & GLOBAL
    ========================================= */
-@font-face { font-family: 'ProggyClean'; src: url('proggyclean.ttf') format('truetype'); }
+@font-face { font-family: 'ProggyClean'; src: url('fonts/proggyclean.ttf') format('truetype'); }
 @font-face { font-family: 'TahomaCustom'; src: url('fonts/tahoma.ttf') format('truetype'); }
 
 * { box-sizing: border-box; transition: all 0.2s ease-in-out; }
