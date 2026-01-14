@@ -93,17 +93,12 @@
 
         audio.volume = 0.05; 
 
-        const playlist = [
-            "b6.mp3",
-            "holy.mp3",
-            "screwy.mp3"
-        ];
+        const playlist = ["b6.mp3", "holy.mp3", "screwy.mp3"];
         let trackIndex = 0;
 
         function loadTrack(index) {
             const fileName = playlist[index];
             audio.src = `music/${fileName}`;
-            // Remove .mp3 extension from display
             trackName.innerText = fileName.replace('.mp3', '');
             
             trackName.style.animation = 'none';
@@ -145,10 +140,6 @@
 
         audio.onended = nextTrack;
         loadTrack(trackIndex);
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === "Escape" && window.closeLightbox) window.closeLightbox();
-        });
     </script>
 </body>
 </html>
