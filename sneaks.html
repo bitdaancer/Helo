@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>media @ 6k0n.lol</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sneaks.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-left">
+            <div class="logo-container">
+                <img src="theguy.jpg" alt="Logo" class="logo-img">
+                <span class="logo-text">6k0n.lol</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">home</a>
+                <a href="sneaks.html">media</a>
+            </nav>
+        </div>
+        <div class="nav-right">
+            <a href="https://www.roblox.com/users/3649411499/profile">roblox</a>
+            <a href="#">misc</a>
+        </div>
+    </header>
+
+    <section class="hero-mini">
+        <div class="hero-content">
+            <h1>media</h1>
+            <p>media regarding my projects (synsploit, veloshitty, etc)</p>
+        </div>
+    </section>
+
+    <section class="video-grid">
+        
+        <div class="video-card" onclick="openLightbox('video', 'storage/miscsplash.mp4', 'miscscreen')">
+            <div class="video-container">
+                <img src="storage/miscsplash.gif" alt="misc screen" class="sneak-img">
+            </div>
+            <div class="video-info">
+                <h3>splashtexts + premium menu</h3>
+                <p>old splashtexts and old misc</p>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="openLightbox('video', 'storage/johnbd.mp4', 'John Backdoor')">
+            <div class="video-container">
+                <video muted poster="jbd.jpg">
+                    <source src="storage/johnbd.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <h3>pre-pre-prealpha of synsploit</h3>
+                <p>veryveryveryvery notworkying version of synsploit, called "john backdoor"</p>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="footer-wrapper">
+        <footer>
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    thanks for visiting \(￣︶￣*\) — check back later for more sneaks — 6k0n.lol
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div id="lightbox" class="lightbox" onclick="handleOutsideClick(event)">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <button class="nav-btn prev" onclick="changeMedia(-1, event)">&#10094;</button>
+        <button class="nav-btn next" onclick="changeMedia(1, event)">&#10095;</button>
+        
+        <div class="lightbox-content">
+            <div id="media-holder"></div>
+            <h3 id="lightbox-title"></h3>
+        </div>
+    </div>
+
+    <script>
+        let currentMedia = [];
+        let currentIndex = 0;
+
+        // Auto-load media from cards
+        function initLightbox() {
+            currentMedia = [];
+            document.querySelectorAll('.video-card').forEach((card) => {
+                const onclickAttr = card.getAttribute('onclick');
+                const match = onclickAttr.match(/'(.*?)', '(.*?)', '(.*?)'/);
+                if (match) {
+                    currentMedia.push({ type: match[1], src: match[2], title: match[3] });
+                }
+            });
+        }
+
+        function openLightbox(type, src, title) {
+            initLightbox();
+            currentIndex = currentMedia.findIndex(m => m.src === src);
+            updateLightbox();
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        function updateLightbox() {
+            const item = currentMedia[currentIndex];
+            const holder = document.getElementById('media-holder');
+            const title = document.getElementById('lightbox-title');
+            
+            title.innerText = item.title;
+            if (item.type === 'image') {
+                holder.innerHTML = `<img src="${item.src}" class="lightbox-media">`;
+            } else {
+                holder.innerHTML = `<video controls autoplay class="lightbox-media"><source src="${item.src}" type="video/mp4"></video>`;
+            }
+        }
+
+        function changeMedia(direction, event) {
+            event.stopPropagation(); // Prevents closing when clicking arrows
+            currentIndex += direction;
+            if (currentIndex >= currentMedia.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = currentMedia.length - 1;
+            updateLightbox();
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.getElementById('media-holder').innerHTML = ''; 
+        }
+
+        function handleOutsideClick(event) {
+            if (event.target.id === 'lightbox') closeLightbox();
+        }
+    </script>
+
+</body>
+</html>
