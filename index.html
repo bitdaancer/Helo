@@ -103,6 +103,7 @@
         function loadTrack(index) {
             const fileName = playlist[index];
             audio.src = `music/${fileName}`;
+            // Remove .mp3 extension from display
             trackName.innerText = fileName.replace('.mp3', '');
             
             trackName.style.animation = 'none';
