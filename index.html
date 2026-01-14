@@ -93,7 +93,7 @@
 
         audio.volume = 0.05; 
 
-        const playlist = ["b6.mp3", "holy.mp3", "screwy.mp3"];
+        const playlist = ["my heart will stop in joy.mp3", "holy.mp3", "screwy people.mp3"];
         let trackIndex = 0;
 
         function loadTrack(index) {
@@ -137,7 +137,30 @@
             else if (val < 0.5) volIcon.className = "fa-solid fa-volume-low";
             else volIcon.className = "fa-solid fa-volume-high";
         }
+        // ... existing variables ...
 
+function updateSlider(val) {
+    const min = volumeSlider.min || 0;
+    const max = volumeSlider.max || 1;
+    const percentage = ((val - min) / (max - min)) * 100;
+    
+    // Updates the track color dynamically
+    volumeSlider.style.background = `linear-gradient(to right, #ff9d00 ${percentage}%, #333 ${percentage}%)`;
+}
+
+function setVolume(val) {
+    audio.volume = val;
+    updateSlider(val); 
+    
+    const volIcon = document.querySelector('.volume-container i');
+    // Swapping classes won't move the bar now because of the fixed width in CSS
+    if (val == 0) volIcon.className = "fa-solid fa-volume-xmark";
+    else if (val < 0.5) volIcon.className = "fa-solid fa-volume-low";
+    else volIcon.className = "fa-solid fa-volume-high";
+}
+
+// Initialize on load
+updateSlider(volumeSlider.value);
         audio.onended = nextTrack;
         loadTrack(trackIndex);
     </script>
