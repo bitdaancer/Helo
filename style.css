@@ -38,42 +38,43 @@ a:hover { color: #ffb74d; text-shadow: 0 0 8px rgba(255, 157, 0, 0.4); }
 .nav-links a:hover, .nav-right a:hover { color: #ff9d00; }
 
 /* =========================================
-   3. HERO SECTION
+   2. HERO SECTION (PHOTO 2 STYLE + GRADIENT)
    ========================================= */
 .hero {
-    height: 350px;
+    height: 450px; /* Increased height for better gradient spread */
     position: relative;
     display: flex;
     align-items: center;
-    padding: 0 100px;
+    padding: 0 10%;
     overflow: hidden;
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('header-bg.jpg'); 
-    background-size: cover; background-position: center;
-    filter: blur(20px) brightness(0.4);
-    z-index: 1;
-}
-
-.hero-gradient-overlay {
-    position: absolute;
-    bottom: 0; left: 0; width: 100%;
-    height: 180px;
-    background: linear-gradient(to bottom, transparent, #1a1a1a);
-    z-index: 2;
+    /* THIS ADDS THE AMBER GRADIENT BACKGROUND */
+    background: radial-gradient(circle at 20% 40%, rgba(255, 157, 0, 0.15) 0%, #111111 100%);
 }
 
 .hero-content { position: relative; z-index: 3; }
-.hero h1 { font-size: 42px; color: #ff9d00; margin: 0; }
-.hero p { font-size: 18px; color: #ccc; margin: 5px 0 20px 0;}
 
+.hero h1 { 
+    font-size: 64px; /* Large text from Photo 2 */
+    color: #bea575; 
+    margin: 0; 
+    font-weight: bold;
+    letter-spacing: -2px;
+}
+
+.hero p { 
+    font-size: 18px; 
+    color: #888; 
+    margin: 10px 0 25px 0;
+}
+
+/* THE WHITE BUTTON FROM PHOTO 2 */
 .btn-get-started {
     background: #333; color: white; border: 1px solid #444;
     padding: 10px 20px; border-radius: 4px; cursor: pointer;
+}
+
+.btn-get-started:hover {
+    background: rgb(32, 32, 32)
 }
 
 /* =========================================
