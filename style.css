@@ -48,14 +48,14 @@ a:hover { color: #ffb74d; text-shadow: 0 0 8px rgba(255, 157, 0, 0.4); }
     padding: 0 10%;
     overflow: hidden;
     /* THIS ADDS THE AMBER GRADIENT BACKGROUND */
-    background: radial-gradient(circle at 20% 40%, rgba(255, 157, 0, 0.15) 0%, #111111 100%);
+    background: radial-gradient(circle at 20% 40%, rgba(104, 67, 33, 0.336) 0%, #111111 100%);
 }
 
 .hero-content { position: relative; z-index: 3; }
 
 .hero h1 { 
     font-size: 64px; /* Large text from Photo 2 */
-    color: #bea575; 
+    color: #ff9d00; 
     margin: 0; 
     font-weight: bold;
     letter-spacing: -2px;
